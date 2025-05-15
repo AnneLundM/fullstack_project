@@ -64,7 +64,7 @@ const BackofficeMessages = ({ messages, onMessageCreated }) => {
   return (
     <section className={styles.backofficeItems}>
       <h1>Beskeder</h1>
-      <ul>
+      <ul className='grid'>
         {messages.map((message) => (
           <MessageCard
             key={message._id}

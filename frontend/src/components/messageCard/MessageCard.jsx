@@ -59,11 +59,12 @@ const MessageCard = ({ message, onMessageCreated }) => {
   return (
     <li className={styles.messageCard}>
       <div className={styles.column}>
-        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+        <div className={styles.isRead}>
           {message.isRead ? <GoRead size={20} /> : <GoUnread size={20} />}
           <div className={styles.text}>
             <p>
-              <b>Fra:</b> {message.name}
+              <b>Fra: </b>
+              {message.name}
             </p>
             <p>
               <b>Emne:</b> {message.subject}
@@ -77,7 +78,7 @@ const MessageCard = ({ message, onMessageCreated }) => {
           </div>
         </div>
       </div>
-      <div className={styles.column}>
+      <div className={styles.buttons}>
         <button onClick={handleReadMessage}>Læs</button>
         <button onClick={() => handleDeleteMessage(message._id)}>Slet</button>
       </div>

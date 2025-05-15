@@ -53,7 +53,7 @@ const useFetchMessages = () => {
     } finally {
       setTimeout(() => {
         setIsLoading(false);
-      }, 2000);
+      }, 1000);
     }
   };
 
