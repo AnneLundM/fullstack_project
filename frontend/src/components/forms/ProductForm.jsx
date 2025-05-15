@@ -75,6 +75,7 @@ const ProductForm = ({ onProductCreated, isEditMode, id, showForm }) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+      <h3>{isEditMode ? "Opdatér produkt" : "Opret nyt produkt"}</h3>
       <label htmlFor='title'>Titel</label>
       <input
         className={styles.input}

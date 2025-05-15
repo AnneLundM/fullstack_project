@@ -39,7 +39,7 @@ function App() {
       {/* Vis toast globalt når den kaldes */}
       <ToastContainer
         position='bottom-right'
-        autoClose={3000}
+        autoClose={1000}
         toastClassName='custom-toast'
       />
     </div>

@@ -9,7 +9,7 @@ import { useLocation } from "react-router-dom";
 const ProductCard = ({ product, onProductCreated }) => {
   const location = useLocation();
   const [isEditing, setIsEditing] = useState(false);
-  const { deleteProduct, error, refetchProducts } = useFetchProducts();
+  const { deleteProduct, error } = useFetchProducts();
   const { user } = useAuth();
 
   const handleEditClick = () => {
@@ -32,15 +32,16 @@ const ProductCard = ({ product, onProductCreated }) => {
       if (result.isConfirmed) {
         await deleteProduct(productId);
 
+        onProductCreated();
+
         await Swal.fire({
           title: "Slettet!",
           text: "Produktet er blevet slettet.",
           icon: "success",
-          timer: 2000,
+          timer: 1000,
           timerProgressBar: true,
           showConfirmButton: false,
         });
-        refetchProducts();
       }
     } catch (error) {
       console.error("Der opstod en fejl ved sletning:", error);
