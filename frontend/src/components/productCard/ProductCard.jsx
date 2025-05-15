@@ -4,8 +4,10 @@ import styles from "./productCard.module.css";
 import { useFetchProducts } from "../../hooks/useFetchProducts";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import { useLocation } from "react-router-dom";
 
 const ProductCard = ({ product, onProductCreated }) => {
+  const location = useLocation();
   const [isEditing, setIsEditing] = useState(false);
   const { deleteProduct, error, refetchProducts } = useFetchProducts();
   const { user } = useAuth();
@@ -47,34 +49,38 @@ const ProductCard = ({ product, onProductCreated }) => {
   };
 
   return (
-    <li className={styles.card}>
-      <h2>{product.title}</h2>
-      <p>{product.price} kr.</p>
-      {product.image && <img alt={product.title} src={product.image} />}
-
-      {/* Vis slet og redigérknap hvis brugerens rolle er admin */}
-      {user.role === "admin" && (
-        <div className={styles.buttons}>
-          <button onClick={() => handleDelete(product._id)}>
-            Slet produkt
-          </button>
-
-          <button onClick={handleEditClick}>
-            {isEditing ? "Annuller redigering" : "Redigér produkt"}
-          </button>
-        </div>
-      )}
-
-      {error && <h5 className='error'>{error}</h5>}
-      {isEditing && (
+    <>
+      {isEditing ? (
         <ProductForm
           onProductCreated={onProductCreated}
           isEditMode={true}
           id={product._id}
           showForm={handleEditClick}
         />
+      ) : (
+        <li className={styles.card}>
+          <h2>{product.title}</h2>
+          <p>{product.price} kr.</p>
+          {product.image && <img alt={product.title} src={product.image} />}
+
+          {location.pathname !== "/products" && user.role === "admin" && (
+            <>
+              <div className={styles.buttons}>
+                <button onClick={() => handleDelete(product._id)}>
+                  Slet produkt
+                </button>
+
+                <button onClick={handleEditClick}>
+                  {isEditing ? "Annuller redigering" : "Redigér produkt"}
+                </button>
+              </div>
+
+              {error && <h5 className='error'>{error}</h5>}
+            </>
+          )}
+        </li>
       )}
-    </li>
+    </>
   );
 };
 

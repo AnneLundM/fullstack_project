@@ -106,16 +106,6 @@ productRoute.put("/product", auth, upload.single("image"), async (req, res) => {
       });
     }
 
-    // Tjekker, om en eller flere af variablerne er undefined eller tomme
-    if (!title || !description || !price || !category) {
-      return res.status(400).send({
-        status: "error",
-        message:
-          "Produktet mangler title, description, price og/eller category",
-        data: [],
-      });
-    }
-
     // Saml produktdata i et objekt
     const productData = { id, title, description, price, category };
 

@@ -3,6 +3,7 @@ import ProductForm from "../../components/forms/ProductForm";
 import { useFetchProducts } from "../../hooks/useFetchProducts";
 import ProductCard from "../../components/productCard/ProductCard";
 import MessageCard from "../../components/messageCard/MessageCard";
+import styles from "./backoffice.module.css";
 
 // Produkter
 const BackofficeProducts = ({ products, onProductCreated }) => {
@@ -34,7 +35,7 @@ const BackofficeProducts = ({ products, onProductCreated }) => {
   };
 
   return (
-    <section>
+    <section className={styles.backofficeItems}>
       <h1>Produkter</h1>
       <button onClick={() => handleAddProduct()}>Tilføj produkt</button>
       {showForm && (
@@ -61,7 +62,7 @@ const BackofficeProducts = ({ products, onProductCreated }) => {
 // Beskeder
 const BackofficeMessages = ({ messages, onMessageCreated }) => {
   return (
-    <>
+    <section className={styles.backofficeItems}>
       <h1>Beskeder</h1>
       <ul>
         {messages.map((message) => (
@@ -72,7 +73,7 @@ const BackofficeMessages = ({ messages, onMessageCreated }) => {
           />
         ))}
       </ul>
-    </>
+    </section>
   );
 };
 

@@ -72,6 +72,8 @@ const useFetchProducts = () => {
         body: productData,
       });
 
+      console.log(response);
+
       if (response.status === "error") {
         console.log("fejl");
       }
