@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Zen+Loop:ital@0;1&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Zen+Loop:ital@0;1&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+
+  /* Toastify CSS */
+  .custom-toast {
+    background-color: #1e1e1e;
+    color: #fff;
+  }
+
+  .custom-body {
+    font-size: 1.1rem;
+  }
+}
+
+img {
+  width: 100%;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  margin: 0 auto;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .main {
+    flex-direction: column;
+  }
+}
+
+article {
+  padding: 5em 2em;
+}
+
+section {
+  padding: 2em 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+a,
+label {
+  font-weight: 100;
+  text-align: center;
+  font-family: "Zen Loop", cursive;
+}
+
+a {
+  color: black;
+  font-weight: 600;
+}
+
+p {
+  font-family: "Nanum Gothic", sans-serif;
+}
+
+h1 {
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 8px 12px;
+  border: none;
+  background-color: #0077cc;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #005fa3;
+  }
+}
+
+.error {
+  font-size: 15px;
+  font-family: "Nanum Gothic", sans-serif;
+  color: red;
+  margin: 10px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  padding: 16px;
+  width: 80%;
+  margin: auto;
+}
+
+.unauthorized {
+  margin: 30px auto;
+  font-size: 20px;
+}
