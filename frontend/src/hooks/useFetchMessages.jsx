@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import useAuth from "./useAuth";
-import { toast } from "react-toastify";
 
 const useFetchMessages = () => {
   const [messages, setMessages] = useState([]);
@@ -47,13 +46,14 @@ const useFetchMessages = () => {
       }
 
       const result = await response.json();
-
       return result;
     } catch (error) {
       console.log(error);
       setError(error);
     } finally {
-      setIsLoading(false);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 2000);
     }
   };
 
@@ -71,9 +71,6 @@ const useFetchMessages = () => {
 
       const result = await response.json();
 
-      if (result.statusCode === 200) {
-        toast.success(`${result.message}`);
-      }
       refetchMessages();
 
       return result;

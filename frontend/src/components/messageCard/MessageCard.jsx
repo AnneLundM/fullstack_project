@@ -8,6 +8,7 @@ const MessageCard = ({ message, onMessageCreated }) => {
   const [showMessage, setShowMessage] = useState(false);
   const { updateMessage, deleteMessage } = useFetchMessages();
 
+  // Læs besked
   const handleReadMessage = async () => {
     setShowMessage(!showMessage);
 
@@ -21,6 +22,7 @@ const MessageCard = ({ message, onMessageCreated }) => {
     }
   };
 
+  // Slet besked
   const handleDeleteMessage = async (messageId) => {
     try {
       const result = await Swal.fire({
@@ -43,7 +45,7 @@ const MessageCard = ({ message, onMessageCreated }) => {
           title: "Slettet!",
           text: "Beskeden er blevet slettet.",
           icon: "success",
-          timer: 2000,
+          timer: 1000,
           timerProgressBar: true,
           showConfirmButton: false,
         });
@@ -56,21 +58,37 @@ const MessageCard = ({ message, onMessageCreated }) => {
 
   return (
     <li className={styles.messageCard}>
-      {message.isRead ? <GoRead /> : <GoUnread />}
       <div className={styles.column}>
-        <p>Fra: {message.name}</p>
-        <p>Emne: {message.subject}</p>
-        {showMessage && <p>Besked: {message.message}</p>}
-        {message.isRead && (
-          <span>
-            Læst d. {new Date(message.updatedAt).toLocaleDateString("da-DK")}
-          </span>
-        )}
+        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          {message.isRead ? <GoRead size={20} /> : <GoUnread size={20} />}
+          <div className={styles.text}>
+            <p>
+              <b>Fra:</b> {message.name}
+            </p>
+            <p>
+              <b>Emne:</b> {message.subject}
+            </p>
+            {message.isRead && (
+              <span>
+                Læst d.{" "}
+                {new Date(message.updatedAt).toLocaleDateString("da-DK")}
+              </span>
+            )}
+          </div>
+        </div>
       </div>
       <div className={styles.column}>
-        <button onClick={handleReadMessage}>Læs mere</button>
+        <button onClick={handleReadMessage}>Læs</button>
         <button onClick={() => handleDeleteMessage(message._id)}>Slet</button>
       </div>
+      {showMessage && (
+        <div className={styles.message}>
+          <p>
+            <b>Besked:</b>
+            <span>{message.message}</span>
+          </p>
+        </div>
+      )}
     </li>
   );
 };
