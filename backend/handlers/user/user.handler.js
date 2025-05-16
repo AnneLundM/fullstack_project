@@ -31,15 +31,6 @@ export const createUser = async ({ name, email, role, password, image }) => {
   try {
     await dbConnect();
 
-    const existingUser = await userModel.findOne({ email });
-    if (existingUser) {
-      return {
-        status: "error",
-        message: "User with this email already exists",
-        data: [],
-      };
-    }
-
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = await userModel.create({
@@ -49,20 +40,10 @@ export const createUser = async ({ name, email, role, password, image }) => {
       image,
       hashedPassword,
     });
-
-    return {
-      status: "ok",
-      message: "User created successfully",
-      data: user,
-    };
+    return user;
   } catch (error) {
-    console.error("Error creating user:", error);
-    return {
-      status: "error",
-      message: "An error occurred while creating the user",
-      data: [],
-      error: error.message,
-    };
+    console.error("Fejl i createUser:", error);
+    throw error;
   }
 };
 
@@ -88,19 +69,10 @@ export const updateUser = async (user) => {
       new: true,
     });
 
-    return {
-      status: "ok",
-      message: "User updated successfully",
-      data: updatedUser,
-    };
+    return updatedUser;
   } catch (error) {
     console.error("Error updating user:", error);
-    return {
-      status: "error",
-      message: "An error occurred while updating the user",
-      data: [],
-      error: error.message,
-    };
+    throw new Error("Opdatering af bruger fejlede: " + error.message);
   }
 };
 
@@ -132,11 +104,7 @@ export const deleteUser = async (id) => {
       };
     }
 
-    return {
-      status: "ok",
-      message: "User deleted successfully",
-      data: deletedUser,
-    };
+    return deletedUser;
   } catch (error) {
     console.error("Error deleting user:", error);
     return {

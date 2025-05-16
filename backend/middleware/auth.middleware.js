@@ -50,12 +50,13 @@ const auth = (req, res, next) => {
 
     // Går videre til næste middleware eller route-handler
     return next();
-  } catch (err) {
+  } catch (error) {
     // Tokenet kunne ikke valideres – det er sandsynligvis udløbet eller ugyldigt
-    console.error("Invalid token:", err);
+    console.error("Invalid token:", error);
     return res.status(401).json({
-      status: "error",
+      status: `error: ${error}`,
       message: "Invalid token - please sign in again.",
+      statusCode: 401,
     });
   }
 };

@@ -7,8 +7,10 @@ import {
   createUser,
   deleteUser,
   getUserById,
+  getUsers,
   updateUser,
 } from "../../handlers/user/user.handler.js";
+import userModel from "../../models/users/user.model.js";
 
 const userRoute = express.Router();
 
@@ -51,6 +53,17 @@ userRoute.post("/user", auth, upload.single("image"), async (req, res) => {
   try {
     const { name, email, role, password } = req.body;
 
+    const existingUser = await userModel.findOne({ email });
+
+    if (existingUser) {
+      return res.status(409).send({
+        status: "error",
+        message: "User with this email already exists",
+        data: [],
+        statusCode: 11000,
+      });
+    }
+
     if (!name || !email || !password) {
       return res.status(400).send({
         status: "error",
@@ -61,7 +74,6 @@ userRoute.post("/user", auth, upload.single("image"), async (req, res) => {
     }
 
     const user = { name, email, role, password };
-
     // req.file bliver automatisk tilføjet af multer
     if (req.file) {
       user.image =
@@ -169,8 +181,6 @@ userRoute.delete("/user/:id", auth, async (req, res) => {
         data: [],
       });
     }
-
-    if (!isValidObjectId(id)) return;
 
     const result = await deleteUser(id);
 

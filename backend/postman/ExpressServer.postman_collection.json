@@ -1,0 +1,550 @@
+{
+	"info": {
+		"_postman_id": "c466fb27-eef7-40b7-81be-cd08c26435c0",
+		"name": "ExpressServer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38584738",
+		"_collection_link": "https://mcdmviborg.postman.co/workspace/webmcdm.dk---Server-Projects~f1ca1e4d-4cb3-49f6-9664-7a010d498024/collection/38584738-c466fb27-eef7-40b7-81be-cd08c26435c0?action=share&source=collection_link&creator=38584738"
+	},
+	"item": [
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Post Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Nyt produkt",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "En beskrivelse af det nye produkt",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "500",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "Produkter",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/AnneLundMøller/Pictures/logo.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3042/product",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3042",
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3042/product/680b502416023474364f8146",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3042",
+							"path": [
+								"product",
+								"680b502416023474364f8146"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3042/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3042",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3042/product/9a8293bf-6cd1-435e-8e3c-6270d4217563",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3042",
+							"path": [
+								"product",
+								"9a8293bf-6cd1-435e-8e3c-6270d4217563"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://localhost:3042/product",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3042",
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Martin",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "martin@mail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/AnneLundMøller/Desktop/Billeder/ninja.png",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server_path}}/user",
+							"host": [
+								"{{server_path}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server_path}}/users",
+							"host": [
+								"{{server_path}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Morten",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "role",
+									"value": "admin",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "id",
+									"value": "6826eb2c4953a9a791866bda",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server_path}}/user",
+							"host": [
+								"{{server_path}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Morten",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "role",
+									"value": "admin",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "id",
+									"value": "6826eb2c4953a9a791866bda",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server_path}}/user/6826ec8e88a988c77adac2b6",
+							"host": [
+								"{{server_path}}"
+							],
+							"path": [
+								"user",
+								"6826ec8e88a988c77adac2b6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Messages",
+			"item": [
+				{
+					"name": "Get All Messages",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3042/messages",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3042",
+							"path": [
+								"messages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Message",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"anne@mail.com\",\r\n    \"name\": \"Anne\",\r\n    \"subject\": \"Emne på beskeden\",\r\n    \"message\": \"En masse sludder og pladder\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3042/message",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3042",
+							"path": [
+								"message"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Message",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODE5YWUwMGQ3MjFiNGIwZGNkYmNlMmMiLCJlbWFpbCI6ImFubmVAbWFpbC5jb20iLCJuYW1lIjoiQW5uZSIsImltYWdlIjoiaHR0cDovL2xvY2FsaG9zdDozMDQyL3VwbG9hZHMvdXNlcnMvbmluamEucG5nIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzQ3MzgwOTk0LCJleHAiOjE3NDc0NjczOTR9.8HggNIhmvWo0kRU1yj9RDU898Sf2u_VVRI3d7_lXZNE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"6826fe70887776593b4536ea\",\r\n    \"isRead\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server_path}}/message",
+							"host": [
+								"{{server_path}}"
+							],
+							"path": [
+								"message"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODE5YWUwMGQ3MjFiNGIwZGNkYmNlMmMiLCJlbWFpbCI6ImFubmVAbWFpbC5jb20iLCJuYW1lIjoiQW5uZSIsImltYWdlIjoiaHR0cDovL2xvY2FsaG9zdDozMDQyL3VwbG9hZHMvdXNlcnMvbmluamEucG5nIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzQ3MzgwOTk0LCJleHAiOjE3NDc0NjczOTR9.8HggNIhmvWo0kRU1yj9RDU898Sf2u_VVRI3d7_lXZNE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"anne@mail.com\",\r\n    \"password\": \"1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server_path}}/auth/signin",
+					"host": [
+						"{{server_path}}"
+					],
+					"path": [
+						"auth",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "server_path",
+			"value": "http://localhost:3042",
+			"type": "default"
+		},
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODE5YWUwMGQ3MjFiNGIwZGNkYmNlMmMiLCJlbWFpbCI6ImFubmVAbWFpbC5jb20iLCJuYW1lIjoiQW5uZSIsImltYWdlIjoiaHR0cDovL2xvY2FsaG9zdDozMDQyL3VwbG9hZHMvdXNlcnMvbmluamEucG5nIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzQ3MzgwOTk0LCJleHAiOjE3NDc0NjczOTR9.8HggNIhmvWo0kRU1yj9RDU898Sf2u_VVRI3d7_lXZNE",
+			"type": "string"
+		}
+	]
+}

@@ -40,7 +40,11 @@ export const updateMessage = async (body) => {
 
     const { id, ...updateData } = body;
 
-    const updatedMessage = await messageModel.findByIdAndUpdate(id, updateData);
+    const updatedMessage = await messageModel.findByIdAndUpdate(
+      id,
+      updateData,
+      { new: true }
+    );
 
     return updatedMessage;
   } catch (error) {
