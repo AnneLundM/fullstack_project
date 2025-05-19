@@ -2,17 +2,37 @@ import { useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import { useLocalStorage } from "@uidotdev/usehooks";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const useAuth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-
+  const navigate = useNavigate();
   // Gem bruger-oplysninger og token i localStorage
   const [user, setUser] = useLocalStorage("user", {});
   const [auth, setAuth] = useLocalStorage("auth", {});
 
-  const navigate = useNavigate();
+  // Tjek om token er udløbet
+  const isTokenExpired = (token) => {
+    try {
+      const decoded = jwtDecode(token);
+      if (!decoded.exp) return true;
+
+      const now = Math.floor(Date.now() / 1000);
+      return decoded.exp < now;
+    } catch (err) {
+      console.error("Kunne ikke dekode token:", err);
+      return true;
+    }
+  };
+
+  useEffect(() => {
+    if (auth.token && isTokenExpired(auth.token)) {
+      signOut();
+      navigate("/login");
+    }
+  }, [auth.token]);
 
   const signIn = async (e) => {
     e.preventDefault();
@@ -21,7 +41,7 @@ const useAuth = () => {
       const response = await fetch("http://localhost:3042/auth/signin", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json", // Vi sender JSON
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ email, password }),
       });
@@ -47,7 +67,7 @@ const useAuth = () => {
     }
   };
 
-  // Funktion til at logge ud – rydder auth og brugerdata
+  // Log ud – rydder auth og brugerdata
   const signOut = () => {
     setAuth({});
     setUser({});
@@ -55,7 +75,7 @@ const useAuth = () => {
 
   // Ekstra hjælpedata:
   const token = auth.token ? auth.token : ""; // Udtræk token (hvis den findes)
-  const signedIn = !!auth.token; // Boolean: Er brugeren logget ind?
+  const signedIn = auth.token && !isTokenExpired(auth.token);
 
   return {
     email,

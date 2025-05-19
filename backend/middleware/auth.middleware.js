@@ -51,12 +51,20 @@ const auth = (req, res, next) => {
     // Går videre til næste middleware eller route-handler
     return next();
   } catch (error) {
-    // Tokenet kunne ikke valideres – det er sandsynligvis udløbet eller ugyldigt
-    console.error("Invalid token:", error);
+    console.error("Invalid token:", error); // SE LOGGEN I KONSOLET HER
+
+    if (error.name === "TokenExpiredError") {
+      return res.status(401).json({
+        status: "error",
+        error: "TokenExpired",
+        message: "Your session has expired. Please log in again.",
+      });
+    }
+
     return res.status(401).json({
-      status: `error: ${error}`,
-      message: "Invalid token - please sign in again.",
-      statusCode: 401,
+      status: "error",
+      error: error.name || "UnknownError",
+      message: error.message || "Invalid token - please sign in again.",
     });
   }
 };

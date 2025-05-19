@@ -34,6 +34,18 @@
     flex-wrap: wrap;
     margin-bottom: 12px;
   }
+
+  .buttons button:hover {
+    background-color: #256bb2;
+  }
+
+  .buttons button:nth-child(2) {
+    background-color: #d33;
+  }
+
+  .buttons button:nth-child(2):hover {
+    background-color: #aa1f1f;
+  }
 }
 
 .card:hover {

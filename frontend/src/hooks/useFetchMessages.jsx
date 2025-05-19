@@ -14,15 +14,19 @@ const useFetchMessages = () => {
     try {
       const response = await fetch("http://localhost:3042/messages", {
         headers: {
-          "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
       });
 
+      if (!response.ok) {
+        console.error("Serverfejl:", data);
+        return;
+      }
+
       const data = await response.json();
       setMessages(data.data);
     } catch (error) {
-      setError("Der skete en fejl", error);
+      console.error("Netværksfejl:", error);
     } finally {
       setIsLoading(false);
     }
