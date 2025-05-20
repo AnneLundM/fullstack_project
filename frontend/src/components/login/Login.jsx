@@ -6,7 +6,7 @@ const Login = () => {
 
   return (
     <div className={styles.container}>
-      <h3>Login for at få adgang</h3>
+      <h3>Login som admin for at få adgang</h3>
       <form onSubmit={signIn} className={styles.form}>
         {error && <p style={{ color: "red" }}>{error}</p>}
         <div className={styles.formGroup}>

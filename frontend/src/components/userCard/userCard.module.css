@@ -1,25 +1,54 @@
-.userCard {
-  position: absolute;
-  z-index: 200;
-  right: 20px;
-  top: 20px;
-  background-color: rgba(0, 0, 255, 0.062);
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.card {
+  list-style: none;
+  background-color: rgba(0, 0, 255, 0.06);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  padding: 16px;
+  margin: 20px auto;
+  width: 200px;
+  height: fit-content;
+  transition: box-shadow 0.3s ease;
+
+  h2 {
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333;
+  }
 
   p {
-    margin: 5px;
-    font-size: 15px;
+    color: #666;
+    margin-bottom: 12px;
   }
 
   img {
-    margin: 5px;
-    width: 40px;
+    aspect-ratio: 1/1;
+    border-radius: 6px;
+    margin: 12px auto;
+    width: 50%;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .buttons button:hover {
+    background-color: #256bb2;
+  }
+
+  .buttons button:nth-child(2) {
+    background-color: #d33;
+  }
+
+  .buttons button:nth-child(2):hover {
+    background-color: #aa1f1f;
   }
 }
 
-.button {
-  cursor: pointer;
+.card:hover {
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
 }

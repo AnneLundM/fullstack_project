@@ -12,7 +12,9 @@ const ProtectedRoute = ({ children, requiredRole }) => {
   if (requiredRole && user.role !== requiredRole) {
     return (
       <>
-        <h4 className='unauthorized'>Du har ikke adgang til denne side..</h4>
+        <h4 className='unauthorized'>
+          Du skal have admin-adgang for at se denne side..
+        </h4>
         <Login />
       </>
     );

@@ -9,20 +9,10 @@ export const getUsers = async () => {
     await dbConnect();
 
     const users = await userModel.find({}).select("-password -__v");
-
-    return {
-      status: "ok",
-      message: "Users fetched successfully",
-      data: users,
-    };
+    return users;
   } catch (error) {
     console.error("Error fetching users:", error);
-    return {
-      status: "error",
-      message: "An error occurred while fetching users",
-      data: [],
-      error: error.message,
-    };
+    throw new Error("Der skete en fejl:", error);
   }
 };
 
@@ -43,7 +33,7 @@ export const createUser = async ({ name, email, role, password, image }) => {
     return user;
   } catch (error) {
     console.error("Fejl i createUser:", error);
-    throw error;
+    throw new Error("Der skete en fejl:", error);
   }
 };
 
@@ -107,12 +97,7 @@ export const deleteUser = async (id) => {
     return deletedUser;
   } catch (error) {
     console.error("Error deleting user:", error);
-    return {
-      status: "error",
-      message: "An error occurred while deleting the user",
-      data: [],
-      error: error.message,
-    };
+    throw new Error("Der skete en fejl:", error);
   }
 };
 
@@ -131,18 +116,9 @@ export const getUserById = async (id) => {
       };
     }
 
-    return {
-      status: "ok",
-      message: "User fetched successfully",
-      data: user,
-    };
+    return user;
   } catch (error) {
     console.error("Error fetching user:", error);
-    return {
-      status: "error",
-      message: "An error occurred while fetching the user",
-      data: [],
-      error: error.message,
-    };
+    throw new Error("Der skete en fejl:", error);
   }
 };

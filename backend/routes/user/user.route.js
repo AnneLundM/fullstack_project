@@ -140,7 +140,7 @@ userRoute.put("/user", auth, upload.single("image"), async (req, res) => {
 
     if (req.file) {
       updatedUser.image =
-        process.env.SERVER_HOST + "uploads/users/" + req.file.filename;
+        process.env.SERVER_HOST + "/uploads/users/" + req.file.filename;
     }
 
     const result = await updateUser(updatedUser);

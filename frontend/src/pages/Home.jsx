@@ -1,8 +1,12 @@
+import FadeWrapper from "../styles/FadeWrapper";
+
 const Home = () => {
   return (
-    <section>
-      <h1>Forside</h1>
-    </section>
+    <FadeWrapper>
+      <article>
+        <h1>Forside</h1>
+      </article>
+    </FadeWrapper>
   );
 };
 

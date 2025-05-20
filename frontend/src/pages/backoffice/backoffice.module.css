@@ -7,10 +7,16 @@
     display: flex;
     gap: 20px;
     justify-content: center;
-    margin: 40px;
+    margin: 40px auto;
   }
 
-  .backofficeItems {
-    background-color: rgba(0, 0, 255, 0.05);
+  @media (max-width: 600px) {
+    nav {
+      flex-direction: column;
+    }
   }
+
+  /* .backofficeItems {
+    background-color: rgba(0, 0, 255, 0.05);
+  } */
 }

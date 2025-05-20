@@ -3,6 +3,8 @@ import styles from "./messageCard.module.css";
 import { useFetchMessages } from "../../hooks/useFetchMessages";
 import { GoRead, GoUnread } from "react-icons/go";
 import Swal from "sweetalert2";
+import { AnimatePresence } from "framer-motion";
+import FadeWrapper from "../../styles/FadeWrapper";
 
 const MessageCard = ({ message, onMessageCreated }) => {
   const [showMessage, setShowMessage] = useState(false);
@@ -57,40 +59,44 @@ const MessageCard = ({ message, onMessageCreated }) => {
   };
 
   return (
-    <li className={styles.messageCard}>
-      <div className={styles.column}>
-        <div className={styles.isRead}>
-          {message.isRead ? <GoRead size={20} /> : <GoUnread size={20} />}
-          <div className={styles.text}>
-            <p>
-              <b>Fra: </b>
-              {message.name}
-            </p>
-            <p>
-              <b>Emne:</b> {message.subject}
-            </p>
-            {message.isRead && (
-              <span>
-                Læst d.{" "}
-                {new Date(message.updatedAt).toLocaleDateString("da-DK")}
-              </span>
-            )}
+    <FadeWrapper>
+      <li className={styles.messageCard}>
+        <div className={styles.column}>
+          <div className={styles.isRead}>
+            {message.isRead ? <GoRead size={20} /> : <GoUnread size={20} />}
+            <div className={styles.text}>
+              <p>
+                <b>Fra: </b>
+                {message.name}
+              </p>
+              <p>
+                <b>Emne:</b> {message.subject}
+              </p>
+              {message.isRead && (
+                <span>
+                  Læst d.{" "}
+                  {new Date(message.updatedAt).toLocaleDateString("da-DK")}
+                </span>
+              )}
+            </div>
           </div>
         </div>
-      </div>
-      <div className={styles.buttons}>
-        <button onClick={handleReadMessage}>Læs</button>
-        <button onClick={() => handleDeleteMessage(message._id)}>Slet</button>
-      </div>
-      {showMessage && (
-        <div className={styles.message}>
-          <p>
-            <b>Besked:</b>
-            <span>{message.message}</span>
-          </p>
+        <div className={styles.buttons}>
+          <button onClick={handleReadMessage}>Læs</button>
+          <button onClick={() => handleDeleteMessage(message._id)}>Slet</button>
         </div>
-      )}
-    </li>
+        {showMessage && (
+          <FadeWrapper keyName='form'>
+            <div className={styles.message}>
+              <p>
+                <b>Besked:</b>
+                <span>{message.message}</span>
+              </p>
+            </div>
+          </FadeWrapper>
+        )}
+      </li>
+    </FadeWrapper>
   );
 };
 

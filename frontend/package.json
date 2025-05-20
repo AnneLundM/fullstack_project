@@ -12,6 +12,7 @@
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
     "@uidotdev/usehooks": "^2.4.1",
+    "framer-motion": "^12.12.1",
     "gsap": "^3.13.0",
     "jwt-decode": "^4.0.0",
     "react": "^19.0.0",

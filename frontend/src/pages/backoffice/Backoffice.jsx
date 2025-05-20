@@ -1,25 +1,35 @@
 import { useState } from "react";
 import styles from "./backoffice.module.css";
 import { Link } from "react-router-dom";
-import { BackofficeMessages, BackofficeProducts } from "./BackofficeItems";
+import {
+  BackofficeMessages,
+  BackofficeProducts,
+  BackofficeUsers,
+} from "./BackofficeItems";
 import { useFetchProducts } from "../../hooks/useFetchProducts";
 import { useFetchMessages } from "../../hooks/useFetchMessages";
+import { useFetchUsers } from "../../hooks/useFetchUsers";
+import FadeWrapper from "../../styles/FadeWrapper";
+import ProfileCard from "../../components/profile/ProfileCard";
 
 const Backoffice = () => {
   const [view, setView] = useState("");
   const { products, refetchProducts } = useFetchProducts();
   const { messages, refetchMessages } = useFetchMessages();
+  const { users, refetchUsers } = useFetchUsers();
 
   return (
-    <article className={styles.backoffice}>
-      <section>
+    <FadeWrapper>
+      <article className={styles.backoffice}>
         <header>
           <h1>Backoffice</h1>
+          <ProfileCard />
           <Link to='/'>Tilbage til frontend</Link>
         </header>
         <nav>
           <button onClick={() => setView("products")}>Vis Produktliste</button>
           <button onClick={() => setView("messages")}>Vis Beskeder</button>
+          <button onClick={() => setView("users")}>Vis Brugere</button>
         </nav>
         {view === "products" && (
           <BackofficeProducts
@@ -33,8 +43,11 @@ const Backoffice = () => {
             onMessageCreated={refetchMessages}
           />
         )}
-      </section>
-    </article>
+        {view === "users" && (
+          <BackofficeUsers users={users} onUserCreated={refetchUsers} />
+        )}
+      </article>
+    </FadeWrapper>
   );
 };
 

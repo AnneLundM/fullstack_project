@@ -2,7 +2,9 @@ import { useEffect } from "react";
 import styles from "./form.module.css";
 import { useFetchProducts } from "../../hooks/useFetchProducts";
 import { useForm } from "react-hook-form";
+import { IoMdClose } from "react-icons/io";
 import { ReactClipLoader } from "../loading/ReactLoader";
+import FadeWrapper from "../../styles/FadeWrapper";
 
 const ProductForm = ({ onProductCreated, isEditMode, id, showForm }) => {
   const { createProduct, updateProduct, fetchProductById, isLoading } =
@@ -75,7 +77,12 @@ const ProductForm = ({ onProductCreated, isEditMode, id, showForm }) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+      <div className={styles.close}>
+        <IoMdClose size={25} onClick={() => showForm()} />
+      </div>
+
       <h3>{isEditMode ? "Opdatér produkt" : "Opret nyt produkt"}</h3>
+
       <label htmlFor='title'>Titel</label>
       <input
         className={styles.input}
