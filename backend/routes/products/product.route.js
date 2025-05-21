@@ -1,3 +1,6 @@
+// En route modtager en http-request - fx. en get '/product/:id'
+// Routen sender requesten videre til handleren
+
 import express from "express";
 import {
   createProduct,

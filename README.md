@@ -1,9 +1,19 @@
 # Fullstack code-along-project (Backend + frontend)
 
-Kopiér ikke noget herfra, men find inspiration i forhold til logik samt kode- og
-mappestruktur!
+**OBS:** Kopiér ikke noget herfra, men find inspiration i forhold til logik samt
+kode- og mappestruktur!
 
-## Vejledning
+De medfølgende opgaver i roden af dette projekt, er gode øvelser i forhold til
+at lære om og forstå flere af de biblioteker, der bliver brugt heri.
+
+Løs opgaverne og skriv kommentarer til den kode du vælger at bruge herfra.
+**AL** kode skal kunne forklares.
+
+**Vis en md-fil ved at højreklikke på den og klikke 'Open Preview'**
+
+---
+
+## Vejledning til opstart af projektet
 
 Dette projekt køres på følgende måde:
 
@@ -48,6 +58,8 @@ Dette projekt køres på følgende måde:
 4. Åbn MongoDB Compass og tjek at databasen er oprettet
 5. Import en ny collection i Postman (indsæt filen fra /backend/postman)
 6. Test alle endpoints
+
+---
 
 ## OBS
 

@@ -1,3 +1,6 @@
+// Handleren modtager requesten fra routen, kalder modellen og udfører derefter en handling på baggrund af metoden (get, post, put, delete)
+// Der sendes derefter et respons tilbage til klienten
+
 import dbConnect from "../../dbConnect.js";
 import { deleteProductImage } from "../file.handler.js";
 import productModel from "../../models/products/product.model.js";
