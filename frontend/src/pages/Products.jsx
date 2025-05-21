@@ -16,22 +16,19 @@ const Products = () => {
   if (isLoading) return <ReactClipLoader />;
 
   return (
-    <FadeWrapper>
-      <article>
-        <h1>Produkter</h1>
-
-        <div className='grid'>
-          {error && <h5>{error}</h5>}
-          {products.map((product) => (
-            <ProductCard
-              product={product}
-              key={product._id}
-              onProductCreated={refetch}
-            />
-          ))}
-        </div>
-      </article>
-    </FadeWrapper>
+    <article>
+      <h1>Produkter</h1>
+      <div className='grid'>
+        {error && <h5>{error}</h5>}
+        {products.map((product) => (
+          <ProductCard
+            product={product}
+            key={product._id}
+            onProductCreated={refetch}
+          />
+        ))}
+      </div>
+    </article>
   );
 };
 

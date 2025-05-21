@@ -1,5 +1,8 @@
 # Fullstack code-along-project (Backend + frontend)
 
+Kopiér ikke noget herfra, men find inspiration i forhold til logik samt kode- og
+mappestruktur!
+
 ## Vejledning
 
 Dette projekt køres på følgende måde:

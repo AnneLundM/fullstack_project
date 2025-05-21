@@ -24,7 +24,6 @@ const Backoffice = () => {
         <header>
           <h1>Backoffice</h1>
           <ProfileCard />
-          <Link to='/'>Tilbage til frontend</Link>
         </header>
         <nav>
           <button onClick={() => setView("products")}>Vis Produktliste</button>

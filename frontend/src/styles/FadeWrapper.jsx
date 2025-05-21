@@ -5,6 +5,7 @@ const FadeWrapper = ({ children, keyName }) => {
   return (
     <AnimatePresence mode='wait'>
       <motion.div
+        className='fadeWrapper'
         key={keyName}
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}

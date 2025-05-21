@@ -6,6 +6,7 @@ import styles from "./navigation.module.css";
 import { useAuthContext } from "../../context/AuthContext";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { MdClose } from "react-icons/md";
+import { SiAskfm } from "react-icons/si";
 
 const ResponsiveNavbar = () => {
   const [open, setOpen] = useState(false);
@@ -14,7 +15,9 @@ const ResponsiveNavbar = () => {
   return (
     <nav className={styles.navbar}>
       <div className={styles.navbar_container}>
-        <div className={styles.navbar_logo}>Logo</div>
+        <Link to='/' className={styles.navbar_logo}>
+          <SiAskfm color='white' />
+        </Link>
 
         {open ? (
           <MdClose
@@ -54,10 +57,6 @@ const ResponsiveNavbar = () => {
               <Link to='/login'>Log ind</Link>
             </li>
           )}
-          {/* <li>
-            <Link to='/backoffice'>Backoffice</Link>
-         
-          </li> */}
         </ul>
       </div>
 
@@ -85,11 +84,20 @@ const ResponsiveNavbar = () => {
               </Link>
             </li>
 
-            <li>
-              <Link to='/backoffice' onClick={() => setOpen(false)}>
-                Backoffice
-              </Link>
-            </li>
+            {signedIn ? (
+              <>
+                <li>
+                  <Link to='/backoffice'>Backoffice</Link>
+                </li>
+                <li>
+                  <Link onClick={signOut}>Log ud</Link>
+                </li>
+              </>
+            ) : (
+              <li>
+                <Link to='/login'>Log ind</Link>
+              </li>
+            )}
           </motion.ul>
         )}
       </AnimatePresence>

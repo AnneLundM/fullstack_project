@@ -59,7 +59,7 @@ const MessageCard = ({ message, onMessageCreated }) => {
   };
 
   return (
-    <FadeWrapper>
+    <FadeWrapper keyName='card'>
       <li className={styles.messageCard}>
         <div className={styles.column}>
           <div className={styles.isRead}>
@@ -86,7 +86,7 @@ const MessageCard = ({ message, onMessageCreated }) => {
           <button onClick={() => handleDeleteMessage(message._id)}>Slet</button>
         </div>
         {showMessage && (
-          <FadeWrapper keyName='form'>
+          <FadeWrapper keyName='message'>
             <div className={styles.message}>
               <p>
                 <b>Besked:</b>
