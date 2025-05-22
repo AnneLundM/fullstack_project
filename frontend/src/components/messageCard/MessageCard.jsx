@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./messageCard.module.css";
-import { useFetchMessages } from "../../hooks/useFetchMessages";
+import { useFetchMessages } from "../../hooks/messages/useFetchMessages";
 import { GoRead, GoUnread } from "react-icons/go";
 import Swal from "sweetalert2";
 import { AnimatePresence } from "framer-motion";

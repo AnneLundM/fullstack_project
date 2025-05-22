@@ -9,17 +9,18 @@ import {
 } from "../components/loading/ReactLoader";
 import { PacmanLoader } from "react-spinners";
 import FadeWrapper from "../styles/FadeWrapper";
+import Error from "../components/error/Error";
 
 const Products = () => {
   const { products, refetch, error, isLoading } = useFetchProducts();
 
   if (isLoading) return <ReactClipLoader />;
+  if (error) return <Error error={error} />;
 
   return (
     <article>
       <h1>Produkter</h1>
       <div className='grid'>
-        {error && <h5>{error}</h5>}
         {products.map((product) => (
           <ProductCard
             product={product}

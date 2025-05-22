@@ -7,7 +7,7 @@ import {
   BackofficeUsers,
 } from "./BackofficeItems";
 import { useFetchProducts } from "../../hooks/useFetchProducts";
-import { useFetchMessages } from "../../hooks/useFetchMessages";
+import { useFetchMessages } from "../../hooks/messages/useFetchMessages";
 import { useFetchUsers } from "../../hooks/useFetchUsers";
 import FadeWrapper from "../../styles/FadeWrapper";
 import ProfileCard from "../../components/profile/ProfileCard";

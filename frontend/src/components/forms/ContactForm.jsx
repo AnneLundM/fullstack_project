@@ -2,10 +2,10 @@ import styles from "./form.module.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useFetchMessages } from "../../hooks/useFetchMessages";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { ReactClipLoader } from "../loading/ReactLoader";
+import { useCreateMessage } from "../../hooks/messages/useCreateMessage";
 
 // Valideringsskema
 const schema = yup.object({
@@ -19,7 +19,7 @@ const schema = yup.object({
 });
 
 const ContactForm = () => {
-  const { createMessage, isLoading, error } = useFetchMessages();
+  const { createMessage, isLoading, error } = useCreateMessage();
   const [submittedResponse, setSubmittedResponse] = useState(null);
   const {
     register,
@@ -60,7 +60,7 @@ const ContactForm = () => {
   if (isLoading) return <ReactClipLoader />;
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+    <form onSubmit={handleSubmit(onSubmit)} className={styles.contactForm}>
       <label htmlFor='email'>Email</label>
       <input className={styles.input} id='email' {...register("email")} />
       <p className={styles.error}>{errors.email?.message}</p>
