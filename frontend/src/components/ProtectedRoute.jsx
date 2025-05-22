@@ -1,6 +1,5 @@
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
-import Login from "./login/Login";
 
 const ProtectedRoute = ({ children, requiredRole }) => {
   const { user } = useAuth();
@@ -15,7 +14,7 @@ const ProtectedRoute = ({ children, requiredRole }) => {
         <h4 className='unauthorized'>
           Du skal have admin-adgang for at se denne side..
         </h4>
-        <Login />
+        <Link to='/login'>Log ind her</Link>
       </>
     );
   }
